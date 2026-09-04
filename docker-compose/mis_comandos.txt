@@ -1,0 +1,1000 @@
+ 1023  ce eudi-srv-trust-validator/
+ 1024  ls
+ 1025  cd eudi-srv-trust-validator/
+ 1026  ls
+ 1027  cd docker/
+ 1028  ls
+ 1029  docker compose up -d
+ 1030  docker ps
+ 1031  pg_isready -U pid_issuer -d pid_issuer
+ 1032  sudo apt install postgresql-client-common
+ 1033  pg_isready -U pid_issuer -d pid_issuer
+ 1034  docker compose ps
+ 1035  docker ps
+ 1036  docker-compose ps
+ 1037  ufw status
+ 1038  su -
+ 1039  su
+ 1040  sudo ufw status
+ 1041  super-updates
+ 1042  clear
+ 1043  docker ps
+ 1044  sudo tcpdump -i any -n -c 100
+ 1045  sudo apt install rkhunter chkrootkit
+ 1046  docker compose -d
+ 1047  docker compose up -d
+ 1048  docker ps
+ 1049  curl https://localhost/pid-issuer/issuer/credentialsOffer -k
+ 1050  curl https://localhost/pid-issuer/.well-known/openid-credential-issuer -k
+ 1051  curl https://localhost/pid-issuer/.well-known/openid-credential-issuer -k > issuer.txt
+ 1052  sudo lsof /dev/input/event*
+ 1053  sudo ls -l /proc/*/fd/* 2>/dev/null | grep '/dev/input/event'
+ 1054  lsmod
+ 1055  cat /etc/pam.d/password-auth
+ 1056  cat /etc/pam.d/system-auth
+ 1057  Sniffnet
+ 1058  sudo iptraf-ng
+ 1059  ps auxf
+ 1060  crontab -l                     # Tareas del usuario actual
+ 1061  sudo crontab -l               # Tareas de root
+ 1062  ls -la /etc/cron*             # Directorios de cron del sistema
+ 1063  ls -la /etc/init.d/
+ 1064  ls -la /etc/systemd/system/
+ 1065  systemctl list-unit-files --type=service
+ 1066  modinfo apple_mfi_fastcharge
+ 1067  dpkg -S /proc/747/exe 2>/dev/null || readlink /proc/747/exe
+ 1068  grep -r "pam_tty_audit" /etc/pam.d/
+ 1069  dpkg -S $(which psimon) 2>/dev/null
+ 1070  readlink /proc/747/exe
+ 1071  sudo apt install nethogs
+ 1072  sudo nethogs
+ 1073  sudo netstat -tunap | grep ESTABLISHED
+ 1074  sudo apt update && sudo apt upgrade -y
+ 1075  cat /proc/`pidof psimon`/comm
+ 1076  modinfo apple_mfi_fastcharge
+ 1077  docker compose version
+ 1078  git --version
+ 1079  super-updates
+ 1080  ocena-less
+ 1081  ocean-less
+ 1082  ./ocean-less.sh
+ 1083  chmod -R 777 ocean-less.sh
+ 1084  ls -al
+ 1085  su 
+ 1086  sudo cp ocean-less.sh /usr/bin/
+ 1087  ocean-less
+ 1088  sudo cp ocean-less.sh /usr/bin/
+ 1089  cat /usr/bin/ocean-less.sh 
+ 1090  ls -al
+ 1091  ocean-less
+ 1092  ./ocean-less.sh
+ 1093  ls 
+ 1094  ls -al
+ 1095  ocean-less.sh
+ 1096  super-updates
+ 1097  docker ps
+ 1098  docker compose up -d 
+ 1099  curl -k https://localhost/
+ 1100  docker ps
+ 1101  curl -k https://localhost/idp/realms/pid-issuer-realm/.well-known/openid-configuration
+ 1102  curl -k https://localhost/pid-issuer/.well-known/openid-credential-issuer | jq .
+ 1103  curl -k https://localhost/pid-issuer/issuer/credentialsOffer | jq .
+ 1104  curl -X POST https://localhost/idp/realms/pid-issuer-realm/protocol/openid-connect/token   -H "Content-Type: application/x-www-form-urlencoded"   -d "client_id=wallet-dev"   -d "grant_type=authorization_code"   -d "code=EL_CODIGO_OBTENIDO"   -d "redirect_uri=... (la misma que en la URL de autorización)" -k
+ 1105  docker exec -it postgresql psql -U postgres
+ 1106  docker ps
+ 1107  keytool -genkeypair   -alias mi-clave-firma   -keyalg EC   -groupname secp256r1   -sigalg SHA256withECDSA   -validity 3650   -dname "CN=Mi Emisor PID, OU=Unidad, O=Organizacion, L=Ciudad, ST=Provincia, C=ES"   -storetype JKS   -keystore ./mi-keystore.jks   -storepass contraseñaDelKeystore   -keypass contraseñaDeLaClave
+ 1108  ls
+ 1109  cat mi-keystore.jks 
+ 1110  super-updates
+ 1111  sudo apt autoremove
+ 1112  sudo apt clean
+ 1113  sudo apt autoremove
+ 1114  sudo apt purge virtualbox
+ 1115  sudo apt autoremove
+ 1116  sudo apt clean
+ 1117  super-updates
+ 1118  docker compose up -d
+ 1119  docker ps
+ 1120  docker compose up -d
+ 1121  docker ps
+ 1122  clear
+ 1123  docker ps
+ 1124  mkdir wallet-provider
+ 1125  cd wallet-provider/
+ 1126  git clone --branch v0.1.1 --depth 1   https://github.com/eu-digital-identity-wallet/eudi-srv-wallet-provider.git   src/eudi-srv-wallet-provider
+ 1127  ls
+ 1128  git clone --branch v0.1.1 --depth 1   https://github.com/eu-digital-identity-wallet/eudi-srv-wallet-provider.git
+ 1129  ls
+ 1130  cd eudi-srv-wallet-provider/
+ 1131  ls
+ 1132  cd ..
+ 1133  cd src/
+ 1134  ls
+ 1135  cd eudi-srv-wallet-provider/
+ 1136  ls
+ 1137  git apply ../../nonemptylist-decoder-priority.patch
+ 1138  ./gradlew :wallet-provider-service:jibDockerBuild   -Djib.to.image=wallet-provider:patched-v0.1.1
+ 1139  docker images | grep wallet-provider
+ 1140  docker save wallet-provider:patched-v0.1.1 | gzip > wallet-provider-patched.tar.gz
+ 1141  gunzip -c wallet-provider-patched.tar.gz | docker load
+ 1142  cd wallet-provider/trustList/src
+ 1143  docker build -t tlp-local:latest .
+ 1144  git clone https://github.com/eu-digital-identity-wallet/eudi-srv-wallet-provider.git
+ 1145  ls
+ 1146  git clone https://github.com/luis3132/wallet.git
+ 1147  cd wallet-provider/docker
+ 1148  cd wallet/ wallet-provider/docker
+ 1149  cd wallet/wallet-provider/docker
+ 1150  clr
+ 1151  clear
+ 1152  git clone --branch v0.1.1 --depth 1   https://github.com/eu-digital-identity-wallet/eudi-srv-wallet-provider.git   src/eudi-srv-wallet-provider
+ 1153  cd src/eudi-srv-wallet-provider
+ 1154  git apply ../../nonemptylist-decoder-priority.patch
+ 1155  ./gradlew :wallet-provider-service:jibDockerBuild   -Djib.to.image=wallet-provider:patched-v0.1.1
+ 1156  docker ps
+ 1157  docker images | grep wallet-provider
+ 1158  docker save wallet-provider:patched-v0.1.1 | gzip > wallet-provider-patched.tar.gz
+ 1159  cd wallet-provider/trustList/src
+ 1160  cd ..
+ 1161  ls
+ 1162  cd ..
+ 1163  cd wallet-provider/trustList/src
+ 1164  docker build -t tlp-local:latest .
+ 1165  docker ps
+ 1166  docker images
+ 1167  clear
+ 1168  wd
+ 1169  ls
+ 1170  mkjwk
+ 1171  git clone https://github.com/luis3132/wallet.git
+ 1172  git clone https://github.com/luis3132/wallet.git
+ 1173  cd wallet-provider/docker
+ 1174  cd wallet/
+ 1175  cd wallet-provider/docker
+ 1176  git clone --branch v0.1.1 --depth 1   https://github.com/eu-digital-identity-wallet/eudi-srv-wallet-provider.git   src/eudi-srv-wallet-provider
+ 1177  cd src/eudi-srv-wallet-provider
+ 1178  clear
+ 1179  git apply ../../nonemptylist-decoder-priority.patch
+ 1180  ./gradlew :wallet-provider-service:jibDockerBuild   -Djib.to.image=wallet-provider:patched-v0.1.1
+ 1181  docker images | grep wallet-provider
+ 1182  docker save wallet-provider:patched-v0.1.1 | gzip > wallet-provider-patched.tar.gz
+ 1183  cd wallet-provider/trustList
+ 1184  cd ..
+ 1185  cd wallet-provider/trustList
+ 1186  ls
+ 1187  ls src/
+ 1188  rm -rf src
+ 1189  git clone https://github.com/niscy-eudiw/eudi-srv-web-trustedlist-manager-py.git src
+ 1190  cd src
+ 1191  docker build -t tlp-local:latest .
+ 1192  ls
+ 1193  cd ..
+ 1194  ls
+ 1195  ls pid/docker-compose/certs/tlp/tl-signing-cert.der 
+ 1196  ls pid/docker-compose/certs/tlp/tl-signing-cert.der trustList/src/app/xml_gen/
+ 1197  ls pid/docker-compose/certs/tlp/tl-signing-key.der trustList/src/app/xml_gen/
+ 1198  cp pid/docker-compose/certs/tlp/tl-signing-cert.der trustList/src/app/xml_gen/cert.der
+ 1199  cp pid/docker-compose/certs/tlp/tl-signing-key.der  trustList/src/app/xml_gen/privkey.der
+ 1200  ls trustList/src/app/xml_gen/
+ 1201  docker images | grep tlp-local
+ 1202  ls wallet-provider/trustList/src/app/xml_gen/  
+ 1203  ls wallet-provider/trustList/src/app/xml_gen/
+ 1204  ls trustList/src/app/xml_gen/
+ 1205  cd ..
+ 1206  cd wallet-provider/pid/docker-compose
+ 1207  docker ps
+ 1208  docker compose up -d keycloak pid-issuer wallet-provider
+ 1209  docker ps
+ 1210  docker compose ps
+ 1211  docker compose logs pid-issuer | tail -20
+ 1212  clear
+ 1213  cd ..
+ 1214  cd wallet-provider/trustList
+ 1215  ls
+ 1216  docker compose up -d
+ 1217  docker compose ps
+ 1218  curl -sk https://civica.avance.org.co/tlp/ | head
+ 1219  docker ps
+ 1220  cd ..
+ 1221  cd wallet-provider/verifier
+ 1222  docker compose up -d
+ 1223  docker ps 
+ 1224  docker ps -a
+ 1225  docker rm e029268437cf358755e77dd7444d7fee6ae6eec1d0c77c44376626892d50bb19
+ 1226  docker ps -a
+ 1227  docker compose up -d
+ 1228  docker ps
+ 1229  docker compose ps
+ 1230  docker ps -a
+ 1231  docker rm d63f41d0d7d4
+ 1232  docker ps -a
+ 1233  cd ..
+ 1234  cd pid/
+ 1235  cd docker-compose/
+ 1236  docker compose up -d haproxy
+ 1237  docker compose ps haproxy
+ 1238  ping www.ggogle.com
+ 1239  ping www.google.com
+ 1240  ifonfig
+ 1241  ifconfig
+ 1242  nslookup 192.168.0.240
+ 1243  docker ps
+ 1244  cd wallet-provider/pid/docker-compose
+ 1245  docker compose up -d keycloak pid-issuer wallet-provider
+ 1246  docker compose ps
+ 1247  cd ..
+ 1248  cd trustList/
+ 1249  docker compose up -d
+ 1250  docker compose ps
+ 1251  cd ..
+ 1252  cd verifier/
+ 1253  docker compose up -d
+ 1254  docker compose ps
+ 1255  cd ..
+ 1256  cd pid/docker-compose/
+ 1257  docker compose up -d haproxy
+ 1258  cd ..
+ 1259  docker ps
+ 1260  clear
+ 1261  docker ps
+ 1262  docker stop cf0c0d490679
+ 1263  docker stop 4ae8c1a70de0 
+ 1264  docker stop 72784df78fd6
+ 1265  docker stop 98b32e3c983b
+ 1266  docker stop ead9bb8afe68 
+ 1267  docker stop 1193b7d83e21 
+ 1268  docker stop 50f803b02048  
+ 1269  docker ps
+ 1270  docker compose ps
+ 1271  docker stop ba9f6771a612
+ 1272  docker ps
+ 1273  docker compose ps
+ 1274  cd pid/docker-compose/
+ 1275  docker compose up -d keycloak pid-issuer wallet-provider
+ 1276  docker compose ps
+ 1277  cd ..
+ 1278  cd trustList/
+ 1279  docker compose up -d
+ 1280  docker compose ps
+ 1281  cd ..
+ 1282  cd verifier/
+ 1283  docker compose up -d
+ 1284  docker compose ps
+ 1285  cd ..
+ 1286  cd pid/docker-compose/
+ 1287  docker compose up -d haproxy
+ 1288  docker compose ps haproxy  
+ 1289  docker compose ps 
+ 1290  docker ps
+ 1291  docker compose up -d haproxy
+ 1292  docker ps
+ 1293  docker ps -a
+ 1294  docker logs haproxy
+ 1295  cd ..
+ 1296  cd verifier/
+ 1297  docker compose up -d 
+ 1298  docker ps
+ 1299  docker stop 9098691c1bb5 
+ 1300  docker stop bc90ad4fbb5c
+ 1301  docker stop 838b26247a60 
+ 1302  docker stop 29e5edc88558 
+ 1303  docker stop 257746534a1d  
+ 1304  docker stop 98b32e3c983b 
+ 1305  docker ps -a
+ 1306  docker rm 3d26e8a97902
+ 1307  docker rm 9098691c1bb5 
+ 1308  docker rm 838b26247a60
+ 1309  docker rm 29e5edc88558 
+ 1310  docker rm 257746534a1d
+ 1311  docker ps -a
+ 1312  docker rm ba9f6771a612
+ 1313  docker ps -a
+ 1314  docker ps
+ 1315  cd ..
+ 1316  cd pid/docker-compose/
+ 1317  docker compose up -d keycloak pid-issuer wallet-provider
+ 1318  docker ps
+ 1319  docker compose up -d --remove-orphans keycloak pid-issuer wallet-provider
+ 1320  docker ps
+ 1321  docker rm 2b23c6cbd1d3
+ 1322  docker stop 2b23c6cbd1d3
+ 1323  docker rm 2b23c6cbd1d3
+ 1324  docker stop 379776362f9f 
+ 1325  docker rm 379776362f9f 
+ 1326  docker stop 6f3dd267d998 
+ 1327  docker rm 6f3dd267d998 
+ 1328  docker compose up -d --remove-orphans keycloak pid-issuer wallet-provider
+ 1329  docker ps
+ 1330  docker compose ps
+ 1331  cd ..
+ 1332  cd trustList/
+ 1333  docker compose up -d
+ 1334  docker compose ps
+ 1335  cd ..
+ 1336  cd verifier/
+ 1337  docker compose up -d
+ 1338  docker compose ps
+ 1339  docker ps
+ 1340  docker ps -a
+ 1341  docker logs verifier
+ 1342  super-updates
+ 1343  cleasr
+ 1344  clear
+ 1345  docker ps
+ 1346  docker ps -a
+ 1347  docker rm c8814f0c0b95 
+ 1348  docker rm 11f05c846cb5
+ 1349  docker rm f7a8fc7a6ab2
+ 1350  docker rm 692dfb3d1c55
+ 1351  docker rm 760d127b5149
+ 1352  docker rm 760d127b5149 
+ 1353  docker rm bc90ad4fbb5c 
+ 1354  docker rm 98b32e3c983b
+ 1355  docker ps -a
+ 1356  docker rm 8ff69f080882
+ 1357  docker rm aa97035c7237 
+ 1358  docker rm afdb004bdc48  
+ 1359  docker rm 7a766ae702ea 
+ 1360  docker ps -a
+ 1361  docker images | grep wallet-provider
+ 1362  mkdir certs
+ 1363  mkdir -p ./haproxy/certs2
+ 1364  ls
+ 1365  openssl req -x509 -newkey rsa:2048 -nodes   -keyout ./certs/key.pem   -out ./certs/cert.pem   -days 365   -subj "/CN=civica-desarrollo.avance.org.co"   -addext "subjectAltName=DNS:civica-desarrollo.avance.org.co"
+ 1366  ls
+ 1367  cat ./certs/cert.pem ./certs/key.pem > ./certs/localhost.tls.pem
+ 1368  cd src/
+ 1369  ls
+ 1370  docker build -t tlp-local:latest .
+ 1371  docker ps
+ 1372  docker ps -a
+ 1373  docker build -t tlp-local:latest .
+ 1374  ls wallet-provider/trustList/src/app/xml_gen/  
+ 1375  ls app/xml_gen/  
+ 1376  cd ..
+ 1377  cd pid/docker-compose/
+ 1378  docker compose up -d keycloak pid-issuer wallet-provider
+ 1379  docker compose ps
+ 1380  docker compose logs pid-issuer | tail -20
+ 1381  cd ..
+ 1382  cd tr
+ 1383  cd trustList/
+ 1384  docker compose up -d
+ 1385  docker ps
+ 1386  cd ..
+ 1387  cd verifier/
+ 1388  docker compose up -d
+ 1389  docker compose ps
+ 1390  docker ps
+ 1391  docker compose down
+ 1392  docker ps
+ 1393  cd ..
+ 1394  ls
+ 1395  cd trustList/
+ 1396  docker compose down
+ 1397  cd ..
+ 1398  ls
+ 1399  cd pid/
+ 1400  docker compose down
+ 1401  cd docker-compose/
+ 1402  docker compose down
+ 1403  docker ps
+ 1404  docker compose up -d keycloak pid-issuer wallet-provider
+ 1405  cd ..
+ 1406  cd trustList/
+ 1407  docker compose up -d
+ 1408  cd ..
+ 1409  cd verifier/
+ 1410  docker compose up -d
+ 1411  docker compose ps
+ 1412  cd ..
+ 1413  cd pid/docker-compose/
+ 1414  docker compose up -d haproxy
+ 1415  docker ps
+ 1416  docker ps -a
+ 1417  docker logs e3125c203cb5 
+ 1418  cd ..
+ 1419  cd..
+ 1420  cd ..
+ 1421  ls
+ 1422  cd wallet/
+ 1423  la
+ 1424  cleR
+ 1425  clear
+ 1426  ls
+ 1427  git chockuot
+ 1428  git checkout
+ 1429  git checkout fase-0
+ 1430  git checkout fase-0
+ 1431  git checkout fase-0/base-reproducible 
+ 1432  git stash 
+ 1433  git checkout fase-0/base-reproducible 
+ 1434  docker ps
+ 1435  docker stop 9f6a8ab532dd
+ 1436  docker rm 9f6a8ab532dd
+ 1437  docker stop 4be3749b217b 
+ 1438  docker rm 4be3749b217b 
+ 1439  docker stop f417539baa23
+ 1440  docker rm f417539baa23
+ 1441  docker stop 9bc073804529
+ 1442  docker rm 9bc073804529
+ 1443  docker stop 18be98c37a9d 
+ 1444  docker rm 18be98c37a9d
+ 1445  docker stop 3995e6c7284d
+ 1446  docker rm 3995e6c7284d
+ 1447  docker ps
+ 1448  docker ps -a
+ 1449  docker rm a3a65c1cb760
+ 1450  docker rm e3125c203cb5
+ 1451  docker ps -a
+ 1452  docker images
+ 1453  docker rmi -f $(docker images -aq)
+ 1454  docker images
+ 1455  docker ps -a
+ 1456  docker rm docker rm -f $(docker ps -aq)
+ 1457  docker ps -a
+ 1458  docker ps 
+ 1459  docker images
+ 1460  clear
+ 1461  docker ps 
+ 1462  docker ps -a
+ 1463  docker ps 
+ 1464  ./preparar-entorno.sh 
+ 1465  docker compose up -d   
+ 1466  cd verifier/
+ 1467  ls
+ 1468  docker logs verifier
+ 1469  docker ps 
+ 1470  docker compose ps
+ 1471  docker ps 
+ 1472  tracerouter www.google.com
+ 1473  traceroute www.google.com
+ 1474  sudo apt install traceroute
+ 1475  sudo apt install inetutils-traceroute
+ 1476  traceroute www.google.com
+ 1477  super-updates
+ 1478  echo "# ecosistema_eudi" >> README.md
+ 1479  git init
+ 1480  git add README.md
+ 1481  git status
+ 1482  git commit -m "first commit"
+ 1483  git branch -M main
+ 1484  git remote add origin https://github.com/georincon/ecosistema_eudi.git
+ 1485  git push -u origin main
+ 1486  git commit -m "second commit"
+ 1487  git status
+ 1488  ls
+ 1489  git push -u origin main
+ 1490  git init
+ 1491  git add README.md
+ 1492  echo "# ecosistema_eudi" >> README.md
+ 1493  git add README.md
+ 1494  git remote add origin https://github.com/georincon/ecosistema_eudi.git
+ 1495  git branch -M main
+ 1496  git status
+ 1497  git commit -m "primer commit"
+ 1498  git push -u origin main
+ 1499  echo "# ecosistema_eudi one" >> README.md
+ 1500  git add README.md
+ 1501  git commit -m "segundo commit"
+ 1502  git push -u origin main
+ 1503  echo "# ecosistema_eudiw" >> README.md
+ 1504  git init
+ 1505  git branch -M main
+ 1506  git add README.md
+ 1507  git status
+ 1508  git commit -m "first commit"
+ 1509  git remote add origin https://github.com/georincon/ecosistema_eudiw.git
+ 1510  git push -u origin main
+ 1511  echo "# ecosistema_eudiw one" >> README.md
+ 1512  git add README.md
+ 1513  git commit -m "second commit"
+ 1514  git push -u origin main
+ 1515  git add .
+ 1516  git status
+ 1517  git commit -m "iniciar"
+ 1518  git push -u origin main
+ 1519  ls
+ 1520  git clone https://github.com/eu-digital-identity-wallet/eudi-srv-pid-issuer.git
+ 1521  ./preparar-entorno.sh 
+ 1522  docker compose up -d   
+ 1523  git pull
+ 1524  cd eudi-srv-pid-issuer/
+ 1525  git pull
+ 1526  cd ..
+ 1527  git clone https://github.com/eu-digital-identity-wallet/eudi-srv-pid-issuer.git
+ 1528  cd ..
+ 1529  cd wallet-prueba/
+ 1530  ls
+ 1531  mkdir -p /mnt/user-data/outputs
+ 1532  cd /home/claude/zip-analysis && zip -rq /mnt/user-data/outputs/eudi-srv-pid-issuer-piloto-uis.zip eudi-srv-pid-issuer -x "eudi-srv-pid-issuer/.git/*" -x "eudi-srv-pid-issuer/.gradle/*" -x "eudi-srv-pid-issuer/build/*"
+ 1533  cp /home/claude/piloto-uis-ingenieria-sistemas.patch /mnt/user-data/outputs/
+ 1534  ls -la /mnt/user-data/outputs/
+ 1535  nano patchexec.sh
+ 1536  chmod -R 777 patchexec.sh 
+ 1537  ./ patchexec.sh
+ 1538  ./patchexec.sh
+ 1539  git pull
+ 1540  cd ..
+ 1541  ls
+ 1542  git pull
+ 1543  cd src/
+ 1544  ls
+ 1545  git checkout
+ 1546  git pull
+ 1547  sudo ocean-less.sh
+ 1548  git pull
+ 1549  cd wallet-provider/
+ 1550  ./preparar-entorno.sh     
+ 1551  docker compose up -d   
+ 1552  docker ps -a
+ 1553  docker ps
+ 1554  docker ps -a
+ 1555  sudo ocean-less.sh
+ 1556  chmod +x gradlew
+ 1557  ./gradlew bootBuildImage
+ 1558  cleaR
+ 1559  clear
+ 1560  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1561  python -m pip install --upgrade pip
+ 1562  python3 -m pip install --upgrade pip
+ 1563  python -m pip install --upgrade pip
+ 1564  docker compose up -d   
+ 1565  docker ps -a
+ 1566  docker compose down   
+ 1567  docker ps
+ 1568  docker ps -a
+ 1569  docker rm d9d90c60fa84 
+ 1570  docker rm 5bc1d00739ce 
+ 1571  docker rm 252f77ee22b2
+ 1572  docker rm ab245f1e82a3
+ 1573  docker rm d0e444118b5c 
+ 1574  docker rm ba33bbc5b735
+ 1575  docker rm 7d7132b78985
+ 1576  docker rm 2d2e61443d31  
+ 1577  docker ps -a
+ 1578  docker ps
+ 1579  docker compose down   
+ 1580  clear
+ 1581  docker compose up -d   
+ 1582  docker ps
+ 1583  docker compose down   
+ 1584  docker ps
+ 1585  docker ps -a
+ 1586  docker compose up -d   
+ 1587  docker image
+ 1588  docker compose down   
+ 1589  docker compose up -d   
+ 1590  docker image ls
+ 1591  docker compose down   
+ 1592  docker image ls
+ 1593  docker rmi -R 1251589adbb8 
+ 1594  docker rmi  1251589adbb8 
+ 1595  docker rmi e549bafec785 
+ 1596  docker rmi d01e4770486c
+ 1597  docker rmi ead833b73514
+ 1598  docker image ls
+ 1599  docker compose up -d   
+ 1600  super-updates
+ 1601  docker info
+ 1602  chmod +x gradlew
+ 1603  ./gradlew clean build -x test
+ 1604  ./gradlew spotlessApply
+ 1605  ./gradlew spotlessKotlinCheck
+ 1606  nl -ba src/main/kotlin/eu/europa/ec/eudi/pidissuer/IssuerEnvironmentExtensions.kt | sed -n '535,565p'
+ 1607  grep -R "uisDegreeCredentials" -n src/main/kotlin
+ 1608  ./gradlew spotlessApply
+ 1609  nl -ba src/main/kotlin/eu/europa/ec/eudi/pidissuer/IssuerEnvironmentExtensions.kt | sed -n '535,565p'
+ 1610  grep -R "uisDegreeCredentials" -n src/main/kotlin
+ 1611  nano src/main/kotlin/eu/europa/ec/eudi/pidissuer/adapter/out/attestation/learningcredential/IssueLearningCredential.kt
+ 1612  ./gradlew spotlessApply
+ 1613  ./gradlew clean compileKotlin
+ 1614  ./gradlew clean build -x test
+ 1615  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1616  uname -m
+ 1617  docker version --format '{{.Server.Arch}}'
+ 1618  docker info | grep -i architecture
+ 1619  docker image inspect paketobuildpacks/ubuntu-noble-run:latest --format '{{.Os}}/{{.Architecture}}'
+ 1620  docker buildx imagetools inspect paketobuildpacks/ubuntu-noble-run:latest
+ 1621  uname -m
+ 1622  docker version --format '{{.Server.Arch}}'
+ 1623  docker image inspect paketobuildpacks/ubuntu-noble-run:latest --format '{{.Os}}/{{.Architecture}}'
+ 1624  docker rmi paketobuildpacks/ubuntu-noble-run:latest
+ 1625  docker rmi paketobuildpacks/builder-noble-java-tiny:latest
+ 1626  docker pull --platform=linux/amd64 paketobuildpacks/ubuntu-noble-run:latest
+ 1627  docker pull --platform=linux/amd64 paketobuildpacks/builder-noble-java-tiny:latest
+ 1628  docker image inspect paketobuildpacks/ubuntu-noble-run:latest --format '{{.Os}}/{{.Architecture}}'
+ 1629  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1630  docker buildx imagetools inspect paketobuildpacks/builder-noble-java-tiny:latest
+ 1631  ./gradlew clean
+ 1632  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1633  docker images | grep eudi-pid-issuer
+ 1634  docker run --rm -p 8080:8080 eudi-pid-issuer:local
+ 1635  docker ps
+ 1636  docker ps -a
+ 1637  docker stop 2455e169cd32 
+ 1638  docker rm 2455e169cd32 
+ 1639  docker stop b625d38a60cd
+ 1640  docker rm b625d38a60cd
+ 1641  docker stop c0988ff05238
+ 1642  docker rm c0988ff05238
+ 1643  docker stop 3b0fd6820f89 
+ 1644  docker rm 3b0fd6820f89 
+ 1645  docker stop 3e494b49b157 
+ 1646  docker rm 3e494b49b157 
+ 1647  docker ps -a
+ 1648  docker ps
+ 1649  cd docker-compose/
+ 1650  ls
+ 1651  docker compose config
+ 1652  docker compose up -d
+ 1653  docker inspect pid-issuer --format '{{.Config.Image}}'
+ 1654  docker ps
+ 1655  ifconfig
+ 1656  docker images | grep eudi-pid-issuer
+ 1657  docker images
+ 1658  docker tag eudi-pid-issuer eudi-pid-issuer-01
+ 1659  docker tag eudi-pid-issuer:local eudi-pid-issuer-01:local
+ 1660  docker images
+ 1661  adocker [2~[2~[2~[2~[2~[2~[2~
+ 1662  docker rmi eudi-pid-issuer:local
+ 1663  docker images
+ 1664  flatpak install flathub com.vixalien.sticky
+ 1665  git pull
+ 1666  git stash 
+ 1667  git pull
+ 1668  git fetch
+ 1669  git pull
+ 1670  git fetch origen
+ 1671  git fetch origin
+ 1672  git pull
+ 1673  ls -al
+ 1674  cd docs
+ 1675  ls -al
+ 1676  git checkout
+ 1677  git checkout fase-1/pki-y-trusted-lists 
+ 1678  git pull
+ 1679  pg_dump -U pid_issuer -h localhost -d pid_issuer  > archivo_respaldo.sql
+ 1680  sudo apt-get install postgresql-client
+ 1681  pg_dump -U pid_issuer -h localhost -d pid_issuer  > archivo_respaldo.sql
+ 1682  docker compose exec db pg_dump -U pid_issuer -d pid_issuer > archivo_respaldo.sql
+ 1683  docker compose exec pid_issuer pg_dump -U pid_issuer -d pid_issuer > archivo_respaldo.sql
+ 1684  cd ..
+ 1685  clear
+ 1686  docker images
+ 1687  docker compose down
+ 1688  ls
+ 1689  cd docker-compose/
+ 1690  docker compose down -v
+ 1691  docker ps
+ 1692  docker ps -a
+ 1693  docker images
+ 1694  docker rmi eudi-pid-issuer:local 
+ 1695  docker images
+ 1696  ./gradlew clean build
+ 1697  cd ..
+ 1698  ./gradlew clean build
+ 1699  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1700  cd docker-compose/
+ 1701  docker compose up -d
+ 1702  docker compose down
+ 1703  docker rmi eudi-pid-issuer:local 
+ 1704  cd ..
+ 1705  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1706  cd docker-compose/
+ 1707  docker compose up -d
+ 1708  docker exec -it postgres psql -U pid_issuer -d pid_issuer
+ 1709  docker exec -i postgres dropdb -U pid_issuer -d pid_issuer
+ 1710  docker exec -i postgres dropdb -U pid_issuer  pid_issuer
+ 1711  docker compose down -v
+ 1712  docker compose up -d
+ 1713  docker exec -it postgres psql -U uis_issuer -d db_uis
+ 1714  https://civica-desarrollo.avance.org.co/pid-issuer/issuer/credentialsOffer/generate
+ 1715  docker logs pid-issuer 2>&1 | grep -i -E "error|exception|failed|postgres|r2dbc|academic|sql"
+ 1716  docker compose down -v
+ 1717  docker compose up -d
+ 1718  docker images
+ 1719  docker rmi 9a8afca54e78 
+ 1720  docekr ps
+ 1721  docker ps
+ 1722  docker ps -a
+ 1723  docker rm 834e561b8c01
+ 1724  docker ps -a
+ 1725  docker rmi 9a8afca54e78 
+ 1726  docker rm b6c480d6e376
+ 1727  docker rm 9e0ce823540a
+ 1728  docker rm 3bea3379c1d1
+ 1729  docker rm 1bd956e717f3
+ 1730  docker ps -a
+ 1731  docker ps
+ 1732  docker stop 3bea3379c1d1
+ 1733  docker rm 3bea3379c1d1
+ 1734  docker stop 1bd956e717f3 
+ 1735  docker rm 1bd956e717f3 
+ 1736  docker ps
+ 1737  docker ps -a
+ 1738  docker compose up -d
+ 1739  docker compose down
+ 1740  docker compose up -d
+ 1741  docker ps
+ 1742  docker ps -a
+ 1743  docker images
+ 1744  docker rmi eudi-pid-issuer:local  
+ 1745  docker images
+ 1746  cd ..
+ 1747  ./gradlew clean
+ 1748  ./gradlew clean build -x test
+ 1749  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1750  ./gradlew clean build
+ 1751  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1752  git add .
+ 1753  git status
+ 1754  git commit -m "second"
+ 1755  docker exec -it postgres psql -U pid_issuer -d pid_issuer
+ 1756  docker exec -i postgres psql   -U pid_issuer   -d pid_issuer   < postgresql/schema/V1.sql
+ 1757  docker exec -it postgres psql -U pid_issuer -d pid_issuer
+ 1758  docker compose down
+ 1759  cd..
+ 1760  cd ..
+ 1761  echo "# credential_issuer" >> README_INIT.md
+ 1762  git init
+ 1763  git add .
+ 1764  git status
+ 1765  git commit -m "first commit"
+ 1766  git branch -M main
+ 1767  git remote add origin https://github.com/georincon/credential_issuer.git
+ 1768  git push -u origin main
+ 1769  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1770  docker images
+ 1771  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1772  git push -u origin main
+ 1773  ./gradlew spotlessApply
+ 1774  ./gradlew clean build
+ 1775  DOCKER IMAGES
+ 1776  docker images
+ 1777  ./gradlew spotlessApply
+ 1778  ./gradlew clean
+ 1779  ./gradlew clean buil
+ 1780  ./gradlew clean build
+ 1781  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1782  ./gradlew spotlessApply
+ 1783  ./gradlew clean build
+ 1784  git add .
+ 1785  git status
+ 1786  git commit -m "third"
+ 1787  git push -u origin main
+ 1788  ./gradlew spotlessApply
+ 1789  ./gradlew clean
+ 1790  ./gradlew clean build
+ 1791  ./gradlew spotlessApply
+ 1792  ./gradlew clean
+ 1793  ./gradlew clean build
+ 1794  ./gradlew spotlessApply
+ 1795  ./gradlew clean
+ 1796  ./gradlew clean build
+ 1797  ./gradlew clean build --stacktrace 2>&1 | grep -A 10 "JdbcSQLSyntaxErrorException"
+ 1798  ./gradlew spotlessApply
+ 1799  ./gradlew clean
+ 1800  ./gradlew clean build
+ 1801  ./gradlew spotlessApply
+ 1802  ./gradlew clean build
+ 1803  ./gradlew spotlessApply
+ 1804  ./gradlew clean
+ 1805  ./gradlew spotlessApply
+ 1806  ls
+ 1807  nl -ba src/main/kotlin/eu/europa/ec/eudi/pidissuer/adapter/out/attestation/learningcredential/IssueLearningCredential.kt | sed -n '425,445p'
+ 1808  sed -n '425,445p' src/main/kotlin/eu/europa/ec/eudi/pidissuer/adapter/out/attestation/learningcredential/IssueLearningCredential.kt
+ 1809  ./gradlew spotlessApply
+ 1810  ./gradlew clean build
+ 1811  sed -n '485,505p' src/main/kotlin/eu/europa/ec/eudi/pidissuer/adapter/out/attestation/learningcredential/IssueLearningCredential.kt
+ 1812  nl -ba src/main/kotlin/eu/europa/ec/eudi/pidissuer/adapter/out/attestation/learningcredential/IssueLearningCredential.kt | sed -n '485,505p'
+ 1813  ./gradlew spotlessApply
+ 1814  ./gradlew clean
+ 1815  ./gradlew clean build
+ 1816  git clone https://github.com/eu-digital-identity-wallet/eudi-srv-pid-issuer.git
+ 1817  uname -a
+ 1818  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1819  cd docker-compose/
+ 1820  docker compose up -d
+ 1821  docker ps -a
+ 1822  docker ps 
+ 1823  docker images
+ 1824  ./gradlew clean
+ 1825  ./gradlew clean build
+ 1826  ./gradlew clean
+ 1827  ./gradlew spotlessApply
+ 1828  ./gradlew clean build
+ 1829  ./gradlew spotlessApply
+ 1830  ./gradlew clean build
+ 1831  ./gradlew spotlessApply
+ 1832  ./gradlew clean build
+ 1833  cd docker-compose/
+ 1834  docker-compose up -d
+ 1835  docker compose up -d
+ 1836  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1837  cd ..
+ 1838  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1839  cd docker-compose/
+ 1840  docker compose up -d
+ 1841  docker compose down
+ 1842  docker exec -it postgres psql -U postgres
+ 1843  pid_userp
+ 1844  docker exec -it postgres psql -U pid_issuer -d pid_issuer
+ 1845  doc
+ 1846  sudo apt-get install btop
+ 1847  btop
+ 1848  sudo apt-get install wireshark
+ 1849  sudo apt-get install nagios
+ 1850  docker ps
+ 1851  docker compose down
+ 1852  cd docker-compose/
+ 1853  docker compose down
+ 1854  docker ps
+ 1855  docker image
+ 1856  docker images
+ 1857  docker rmi eudi-pid-issuer:local
+ 1858  docker images
+ 1859  cd ..
+ 1860  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1861  cd docker-compose/
+ 1862  docker compose up -d
+ 1863  docker compose logs --tail=300
+ 1864  docker compose logs -f
+ 1865  sudo apt-get install ntopng
+ 1866  sudo dpkg --configure virtualbox-dkms
+ 1867  sudo apt install linux-headers-$(uname -r)
+ 1868  sudo apt install linux-headers-generic
+ 1869  sudo apt install --reinstall virtualbox-dkms
+ 1870  sudo apt purge virtualbox virtualbox-qt virtualbox-dkms
+ 1871  sudo apt autoremove
+ 1872  sudo apt update
+ 1873  sudo apt install virtualbox virtualbox-qt
+ 1874  sudo apt purge virtualbox virtualbox-qt virtualbox-dkms
+ 1875  sudo apt autoremove
+ 1876  sudo apt update
+ 1877  sudo apt-get install ntopng
+ 1878  ntopng
+ 1879  sudo apt-get purge ntopng
+ 1880  sudo apt autoremove
+ 1881  wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+ 1882  wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+ 1883  sudo add-apt-repository "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+ 1884  sudo apt update
+ 1885  sudo apt install virtualbox-7.0
+ 1886  super-updates
+ 1887  docker images
+ 1888  cd docker-compose/
+ 1889  docker compose up -d
+ 1890  docker images
+ 1891  docker rmi eudi-pid-issuer:local 
+ 1892  docker images
+ 1893  docker ps
+ 1894  docker compose down
+ 1895  docker ps
+ 1896  docker ps -a
+ 1897  docker images
+ 1898  docker rmi eudi-pid-issuer:local 
+ 1899  cd ..
+ 1900  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1901  cd docker-compose/
+ 1902  docker compose up -d
+ 1903  docker compose down
+ 1904  docker images
+ 1905  docker ps -a
+ 1906  docker ps
+ 1907  docker rmi eudi-pid-issuer:local 
+ 1908  cd ..
+ 1909  ./gradlew clean buil
+ 1910  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1911  cd docker-compose/
+ 1912  docker compose up -d
+ 1913  docker compose down
+ 1914  docker ps
+ 1915  docker images
+ 1916  docker rmi eudi-pid-issuer:local 
+ 1917  cd 
+ 1918  cd /Descargas/files/eudi-srv-pid-issuer-uis-definitivo/docker-compose
+ 1919  ls
+ 1920  cd Descargas/files/eudi-srv-pid-issuer-uis-definitivo/
+ 1921  ./gradlew clean build -x test
+ 1922  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1923  cd docker-compose/
+ 1924  docker compose up -d
+ 1925  docker compose down
+ 1926  docker rmi eudi-pid-issuer:local 
+ 1927  cd ..
+ 1928  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1929  cd docker-compose/
+ 1930  docker compose up -d
+ 1931  git initç
+ 1932  git init
+ 1933  ls
+ 1934  echo "hola" > cat hola.txt
+ 1935  ls
+ 1936  echo "hola" > hola.txt && cat hola.txt
+ 1937  del cat
+ 1938  git add .
+ 1939  git status
+ 1940  git commit -m "definitivo"
+ 1941  git branch -M main
+ 1942  git remote add origin https://github.com/georincon/credential_issuer.git
+ 1943  git push -u origin main
+ 1944  git pull
+ 1945  git pull origin main
+ 1946  git pull main origin
+ 1947  git pull origin main
+ 1948  echo "# ecosistema_eudiw" >> hola.txt
+ 1949  git add .
+ 1950  git add .
+ 1951  ls
+ 1952  git add hola.txt
+ 1953  echo "# ecosistema_eudiw" >> hola.txt
+ 1954  git add .
+ 1955  echo "# ecosistema_eudiw" >> hola.txt
+ 1956  git add .
+ 1957  docker ps
+ 1958  ls
+ 1959  cd eudi-srv-pid-issuer/
+ 1960  cd docker-compose/
+ 1961  docker compose down
+ 1962  docker rmi eudi-pid-issuer:local 
+ 1963  docker images
+ 1964  cd ..
+ 1965  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1966  cd docker-compose/
+ 1967  docker compose up -d
+ 1968  docker compose logs --tail=300
+ 1969  docker exec -it postgres psql -U pid_issuer -d pid_issuer
+ 1970  docker compose down
+ 1971  docker rmi eudi-pid-issuer:local 
+ 1972  cd ..
+ 1973  ls
+ 1974  cd ..
+ 1975  ls
+ 1976  cd eudi-srv-pid-issuer-uis-definitivo-final-2026-09-04/
+ 1977  ls
+ 1978  cd eudi-srv-pid-issuer/
+ 1979  ls
+ 1980  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1981  cd docker-compose/
+ 1982  docker compose up -d --force-recreate pid-issuer
+ 1983  docker ps
+ 1984  docker ps -a
+ 1985  docker compose down 
+ 1986  docker compose up -d
+ 1987  docker compose down 
+ 1988  docker rmi eudi-pid-issuer:local 
+ 1989  cd ..
+ 1990  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1991  cd docker-compose/
+ 1992  docker compose up -d
+ 1993  docker compose logs --tail=300
+ 1994  docker compose down 
+ 1995  docker rmi eudi-pid-issuer:local 
+ 1996  cd ..
+ 1997  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 1998  cd docker-compose/
+ 1999  docker compose down 
+ 2000  docker rmi eudi-pid-issuer:local 
+ 2001  cd ..
+ 2002  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 2003  cd docker-compose/
+ 2004  docker compose up -d
+ 2005  cd..
+ 2006  cd ..
+ 2007  git add .
+ 2008  git status
+ 2009  git commit -m "Activacion QR"
+ 2010  git pull origin main
+ 2011  git add .
+ 2012  git status
+ 2013  git commit -m "Activacion QR2"
+ 2014  git push origin main
+ 2015  cd docker-compose/
+ 2016  docker compose down 
+ 2017  docker rmi eudi-pid-issuer:local 
+ 2018  cd ..
+ 2019  ./gradlew bootBuildImage --imageName=eudi-pid-issuer:local
+ 2020  cd docker-compose/
+ 2021  docker compose up -d
+ 2022  history > mis_comandos.txt
