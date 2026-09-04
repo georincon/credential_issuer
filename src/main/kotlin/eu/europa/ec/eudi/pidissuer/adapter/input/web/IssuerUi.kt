@@ -61,21 +61,29 @@ class IssuerUi(
         )
     }
 
-    private suspend fun handleGenerateCredentialsOffer(request: ServerRequest): ServerResponse =
-        effect {
-            val createCredentialOfferRequest = request.createCredentialOfferRequest()
-            // The program must exist and be active. The authoritative academic record
-            // is still resolved later from the authenticated Wallet/Keycloak identity.
-            val programs = academicRegistry.listarProgramasActivos()
-            ensureProgramExists(createCredentialOfferRequest.academicProgramId, programs)
+    private suspend fun handleGenerateCredentialsOffer(request: ServerRequest): ServerResponse {
+        val createCredentialOfferRequest = request.createCredentialOfferRequest()
+        // The program must exist and be active. The authoritative academic record
+        // is still resolved later from the authenticated Wallet/Keycloak identity.
+        val programs = academicRegistry.listarProgramasActivos()
+        val selectedProgram = ensureProgramExists(createCredentialOfferRequest.academicProgramId, programs)
+        val selectedCredentialId = createCredentialOfferRequest.credentialConfigurationIds.firstOrNull()?.value
+        val usefulLinks = createUsefulLinks(metadata.id, metadata.authorizationServers[0])
+
+        return effect {
             createCredentialsOffer(createCredentialOfferRequest)
         }.fold(
-            transform = { credentialsOfferUri -> context(generateQrCode) { credentialsOfferUri.credentialOfferSuccessResponse() } },
+            transform = { credentialsOfferUri ->
+                context(generateQrCode) {
+                    credentialsOfferUri.credentialOfferSuccessResponse(selectedProgram, selectedCredentialId, usefulLinks)
+                }
+            },
             recover = { error ->
                 log.warn("Unable to generate Credentials Offer. Error: {}", error)
                 error.credentialOfferErrorResponse()
             },
         )
+    }
 
     private fun createUsefulLinks(credentialIssuer: CredentialIssuerId, authorizationServer: HttpsUrl): Map<String, String> {
         fun HttpsUrl.wellKnown(path: String): HttpsUrl =
@@ -97,8 +105,13 @@ class IssuerUi(
     }
 }
 
-private fun ensureProgramExists(programId: Long?, programs: List<eu.europa.ec.eudi.pidissuer.adapter.out.academicregistry.ProgramaAcademico>) {
-    require(programId != null && programs.any { it.id == programId }) { "El programa académico seleccionado no existe o está inactivo" }
+private fun ensureProgramExists(
+    programId: Long?,
+    programs: List<eu.europa.ec.eudi.pidissuer.adapter.out.academicregistry.ProgramaAcademico>,
+): eu.europa.ec.eudi.pidissuer.adapter.out.academicregistry.ProgramaAcademico {
+    require(programId != null) { "Debe seleccionar un programa académico" }
+    return programs.firstOrNull { it.id == programId }
+        ?: error("El programa académico seleccionado no existe o está inactivo")
 }
 
 private suspend fun ServerRequest.createCredentialOfferRequest(): CreateCredentialsOffer.Request {
@@ -110,12 +123,24 @@ private suspend fun ServerRequest.createCredentialOfferRequest(): CreateCredenti
 }
 
 context(generateQrCode: GenerateQqCode)
-private suspend fun Uri.credentialOfferSuccessResponse(): ServerResponse {
+private suspend fun Uri.credentialOfferSuccessResponse(
+    selectedProgram: eu.europa.ec.eudi.pidissuer.adapter.out.academicregistry.ProgramaAcademico,
+    selectedCredentialId: String?,
+    usefulLinks: Map<String, String>,
+): ServerResponse {
     val uri = this@credentialOfferSuccessResponse
-    val qrCode = generateQrCode(uri, Format.PNG, Dimensions(Pixels(300u), Pixels(300u)))
+    val qrCode = generateQrCode(uri, Format.PNG, Dimensions(Pixels(360u), Pixels(360u)))
     return ServerResponse.ok().contentType(MediaType.TEXT_HTML).renderAndAwait(
         "display-credentials-offer",
-        mapOf("uri" to uri.toString(), "qrCode" to Base64.encode(qrCode), "qrCodeMediaType" to "image/png"),
+        mapOf(
+            "uri" to uri.toString(),
+            "qrCode" to Base64.encode(qrCode),
+            "qrCodeMediaType" to "image/png",
+            "programaAcademico" to selectedProgram,
+            "credentialConfigurationId" to (selectedCredentialId ?: ""),
+            "usefulLinks" to usefulLinks,
+            "openid4VciVersion" to OpenId4VciSpec.VERSION,
+        ),
     )
 }
 
